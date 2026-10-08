@@ -26,3 +26,5 @@ e il programma calcola il prezzo e compone il preventivo (stampabile in PDF).
 ## Come modificare i prezzi
 
 Si modifica solo `data/prodotti.js`, seguendo le istruzioni scritte in cima al file.
+
+
