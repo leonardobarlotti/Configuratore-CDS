@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configuratore Serramenti – TEST</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Configuratore preventivi</h1>
+      <p class="sub">Versione di prova · prodotti e prezzi inventati</p>
+    </div>
+    <span class="badge">TEST</span>
+  </header>
+
+  <main class="layout">
+    <!-- COLONNA SINISTRA: configurazione di un pezzo -->
+    <section class="card no-print">
+      <h2>1 · Configura il serramento</h2>
+
+      <label>Fornitore
+        <select id="fornitore"></select>
+      </label>
+
+      <label>Prodotto
+        <select id="prodotto"></select>
+      </label>
+
+      <div class="row">
+        <label>Larghezza (mm)
+          <input id="larghezza" type="number" min="0" step="10" value="1000">
+        </label>
+        <label>Altezza (mm)
+          <input id="altezza" type="number" min="0" step="10" value="1400">
+        </label>
+        <label>Quantità
+          <input id="quantita" type="number" min="1" step="1" value="1">
+        </label>
+      </div>
+      <p id="limiti" class="hint"></p>
+
+      <fieldset>
+        <legend>Opzioni</legend>
+        <div id="opzioni"></div>
+      </fieldset>
+
+      <label>Note / posizione (es. "cucina, lato strada")
+        <input id="note" type="text" placeholder="facoltativo">
+      </label>
+
+      <div class="anteprima">
+        <div id="dettaglio"></div>
+        <div class="anteprima-totale">
+          <span>Totale riga</span>
+          <strong id="totaleRiga">–</strong>
+        </div>
+      </div>
+      <p id="errore" class="errore" hidden></p>
+
+      <button id="aggiungi" class="btn primario">Aggiungi al preventivo</button>
+    </section>
+
+    <!-- COLONNA DESTRA: preventivo -->
+    <section class="card preventivo">
+      <h2><span class="no-print">2 · </span>Preventivo</h2>
+
+      <div class="row no-print">
+        <label>Cliente
+          <input id="cliente" type="text" placeholder="Nome e cognome">
+        </label>
+        <label>Data
+          <input id="data" type="date">
+        </label>
+      </div>
+      <p class="solo-stampa" id="intestazioneStampa"></p>
+
+      <div class="tabella-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Descrizione</th>
+              <th class="num">Q.tà</th>
+              <th class="num">Prezzo</th>
+              <th class="no-print"></th>
+            </tr>
+          </thead>
+          <tbody id="righe"></tbody>
+        </table>
+        <p id="vuoto" class="hint">Nessun serramento aggiunto.</p>
+      </div>
+
+      <div class="totali">
+        <div><span>Imponibile</span><span id="imponibile">0,00 €</span></div>
+        <div class="no-print">
+          <span>Sconto %</span>
+          <input id="sconto" type="number" min="0" max="100" step="0.5" value="0">
+        </div>
+        <div><span>Sconto</span><span id="scontoValore">0,00 €</span></div>
+        <div><span id="ivaLabel">IVA</span><span id="iva">0,00 €</span></div>
+        <div class="grande"><span>Totale</span><span id="totale">0,00 €</span></div>
+      </div>
+
+      <div class="azioni no-print">
+        <button id="stampa" class="btn">Stampa / PDF</button>
+        <button id="svuota" class="btn secondario">Svuota</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="no-print">
+    Prototipo di test · i prezzi stanno in <code>data/prodotti.js</code>
+  </footer>
+
+  <!-- Prima i dati, poi il programma che li usa -->
+  <script src="data/prodotti.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
